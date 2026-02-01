@@ -1,0 +1,14 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000" # Using port 3001 to avoid conflict with Mission Control
+    volumes:
+      - ./second-brain.db:/app/second-brain.db
+    environment:
+      - NODE_ENV=production
